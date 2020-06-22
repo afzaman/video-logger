@@ -8,8 +8,9 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Local Video Logger</a>
-            <input class="btn btn-primary btn-lg my-2 my-lg-0" type="file" accept="video/*"/>
+            <input class="form-control-file" type="file" accept="video/*"/>
             <div id="message"></div>
+            <button class="btn btn-success" onclick="exportTableToCSV('log.csv')">Export CSV File</button>         
           </nav>
         <div class="m-5">
             <div class="row">
