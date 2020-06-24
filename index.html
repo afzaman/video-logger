@@ -11,6 +11,7 @@
             <a class="navbar-brand" href="#">Local Video Logger</a>
             <input class="form-control-file" type="file" accept="video/*"/>
             <div id="message"></div>
+            <button class="btn btn-danger" onclick="clearLog()">Clear Log</button>
             <button class="btn btn-success" onclick="exportTableToCSV('log.csv')">Export CSV File</button>         
           </nav>
         <div class="m-5">
@@ -33,6 +34,6 @@
               </tr>
             </thead>
             <tbody id="timestamps"></table>
-        <script class="btn" src="js/main.js"></script>
+        <script class="btn" src="js/array.js"></script>
     </body>
 </html>
