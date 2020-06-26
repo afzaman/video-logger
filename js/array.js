@@ -83,7 +83,7 @@ function Timestamp(className, time){
 }
 
 //Function Timestamp
-function addTimestamp (className){
+function addTimestamp(className){
     timestampLog = JSON.parse(localStorage.getItem("timestampLog"));
     //Grab the current video time
     let video = document.getElementById("video");
@@ -94,9 +94,19 @@ function addTimestamp (className){
     timestampLog.push(timestamp);
     //Save to local storage
     updateLocalStorage(timestampLog);
+    updateCounter(className);
     //Update the display
     render();
 }
+
+function updateCounter(className) {
+    let btn = document.getElementById(className);
+    let counter = btn.value;
+    counter++;
+    btn.innerText = className + " - " + counter;
+    btn.value = counter;
+}
+
 function render(){
     let timestampsTable = document.getElementById("timestamps");
     timestampLog = JSON.parse(localStorage.getItem("timestampLog"));
@@ -113,19 +123,11 @@ function render(){
 function addClassButton () {
     let buttonContainer = document.getElementById("button-container");
     let className = document.getElementById("class-name");
-    if (className.value != undefined) {
-        let btn = document.createElement("button");
-        let counter = 0
-        btn.innerText = className.value + " - ";
-        btn.classList.add("btn", "btn-primary", "btn-block");
-        btn.addEventListener("click", function() {
-            addTimestamp(className.value);
-            counter ++;
-            btn.innerText = className.value + " - " + counter;
-        });
-        buttonContainer.appendChild(btn);
-    }
-}
+    let html = `
+        <button class="btn btn-primary vallue=0 btn-block" id="${className.value}" onclick="addTimestamp('${className.value}')">${className.value}</button><br>
+        `
+    buttonContainer.innerHTML += html;
+};
 window.onload = function () {
     initializeTimestampLog();
     render();
