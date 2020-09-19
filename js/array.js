@@ -138,3 +138,16 @@ function clearLog () {
     updateLocalStorage(timestampLog);
     render();
 }
+
+var slider = document.getElementById("playBackSpeed");
+var output = document.getElementById("playBackSpeedDisplay");
+var vid = document.getElementById("video");
+output.innerHTML = "1x"; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    // var playbackRate = Math.round(Math.log(this.value));
+    var playbackRate = this.value / 20;
+    output.innerHTML = playbackRate + "x";
+    vid.playbackRate = playbackRate;
+}
